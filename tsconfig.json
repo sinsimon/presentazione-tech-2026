@@ -9,7 +9,9 @@
     "paths": {
       "@components": ["components/index.ts"],
       "@components/*": ["components/*"],
-      "@slides/*": ["slides/*"]
+      "@slides/*": ["slides/*"],
+      "@presentations/*": ["presentations/*"],
+      "@presentations": ["presentations/index.ts"]
     }
   },
   "include": ["src/**/*"]

@@ -26,3 +26,7 @@ header.bar { display: flex; justify-content: space-between; align-items: flex-en
 
 .muted { color: var(--muted); }
 
+/* Home list links */
+.homeList { list-style: none; padding: 0; display: grid; gap: 12px; }
+.homeLink { color: #0b0f14; background: linear-gradient(120deg, var(--primary-1), var(--primary-2)); border-radius: 999px; padding: 8px 14px; font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; text-decoration: none; display: inline-block; }
+

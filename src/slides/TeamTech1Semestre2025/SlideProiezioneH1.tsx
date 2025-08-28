@@ -1,8 +1,7 @@
-import React from 'react';
-import { SlideTitle, MetricsPanel, DataTable, Nav } from '@components';
+import React from 'react'
+import { SlideTitle, MetricsPanel, DataTable, Nav } from '@components'
 
 export function SlideProiezioneH1() {
-
   const left = [
     { k: 'Periodo', v: 'Gen–Giu 2025 (H1)' },
     { k: 'Giorni lavorativi per risorsa', v: '120' },
@@ -37,3 +36,7 @@ export function SlideProiezioneH1() {
     </div>
   );
 }
+
+export default SlideProiezioneH1
+
+

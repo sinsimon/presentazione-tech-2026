@@ -8,6 +8,7 @@ export default defineConfig({
     alias: {
       '@components': path.resolve(__dirname, 'src/components'),
       '@slides': path.resolve(__dirname, 'src/slides'),
+      '@presentations': path.resolve(__dirname, 'src/presentations'),
     },
   },
   server: {
