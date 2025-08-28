@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "jsx": "react-jsx",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@components": ["components/index.ts"],
+      "@components/*": ["components/*"],
+      "@slides/*": ["slides/*"]
+    }
+  },
+  "include": ["src/**/*"]
+}
+
+

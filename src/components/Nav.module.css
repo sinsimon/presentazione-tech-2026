@@ -1,0 +1,16 @@
+.nav a[aria-disabled="true"] {
+  visibility: hidden;
+}
+.badge {
+  color: #0b0f14;
+  background: linear-gradient(120deg, var(--primary-1), var(--primary-2));
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
