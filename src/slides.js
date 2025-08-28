@@ -4,8 +4,7 @@
 // slug: identificatore URL-friendly (facoltativo)
 const slides = [
     { name: 'Proiezione H1', file: 'src/slides/proiezione-h1.html', slug: 'proiezione-h1' },
-    // Aggiungi qui le prossime slide, esempio:
-    // { name: 'Confronto H1', file: 'src/slides/confronto-h1.html', slug: 'confronto-h1' },
+    { name: 'Confronto H1', file: 'src/slides/confronto-h1.html', slug: 'confronto-h1' },
 ];
 
 function setNavLinks() {
