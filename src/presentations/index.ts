@@ -1,13 +1,17 @@
-// Registry auto-aggiornabile: importa qui ogni nuova presentazione
-// Nome file => slug = nome file senza estensione
-// export default necessario
+// Auto-discovery delle presentazioni: prende tutti i file .tsx in questa cartella
+// Ogni file deve esportare default un componente React
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore - file esiste
-import TeamTech1Semestre2025 from './TeamTech1Semestre2025'
+// Vite: import.meta.glob
+// Tipizziamo in modo lasco per evitare dipendenze extra
+const modules: Record<string, any> = import.meta.glob('./*.tsx', { eager: true }) as any;
 
-export const presentations = [
-  { slug: 'TeamTech1Semestre2025', component: TeamTech1Semestre2025 },
-]
+export const presentations = Object.entries(modules)
+  .map(([path, mod]) => {
+    const slug = path.replace('./', '').replace(/\.tsx$/, '');
+    const component = (mod && (mod as any).default) as any;
+    if (!component) return null;
+    return { slug, component };
+  })
+  .filter(Boolean) as Array<{ slug: string; component: any }>;
 
 
