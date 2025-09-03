@@ -2,7 +2,7 @@ import React from 'react'
 import { SlideTitle, Nav } from '@components'
 import tableStyles from '../../components/DataTable.module.css'
 
-const DEFAULT_GIORNI_H1_PER_PERSONA = 120
+const DEFAULT_GIORNI_H1_PER_PERSONA = 115
 
 // Mappatura utilization e prezzo/giorno coerente con la slide "Carico massimo"
 const UTILIZATION: Record<string, number> = {
@@ -78,6 +78,13 @@ function formatEuro(n: number): string {
 
 type PersonKey = 'Cristiano' | 'Erica' | 'Pierpaolo' | 'Giada' | 'Margherita' | 'Elisabetta' | 'Fabio'
 
+const H1_FACTORS: Record<string, number> = {
+  'AVACY': 0.5,
+  'AMS': 0.6,
+  'ROBINSON SITO': 0.6,
+  'KOLINPHARMA': 0.5,
+}
+
 function computeFromCsv(csv: string) {
   const lines = csv.trim().split(/\r?\n/)
   const header = lines[0].split(',')
@@ -111,18 +118,10 @@ function computeFromCsv(csv: string) {
   for (let i = 1; i < lines.length; i++) {
     const cols = lines[i].split(',')
     const project = cols[0]
-    if (project.toLowerCase().startsWith('totale')) {
-      totals.Cristiano = parseEuro(cols[idx.CRIS.val])
-      totals.Erica = parseEuro(cols[idx.ERICA.val])
-      totals.Pierpaolo = parseEuro(cols[idx.PIER.val])
-      totals.Giada = parseEuro(cols[idx.GIADA.val])
-      totals.Margherita = parseEuro(cols[idx.MEG.val])
-      totals.Elisabetta = parseEuro(cols[idx.BETTA.val])
-      totals.Fabio = parseEuro(cols[idx.FABE.val])
-      break
-    }
+    if (project.toLowerCase().startsWith('totale')) continue
+    const factor = H1_FACTORS[project] ?? 1
     const pushIf = (_pctStr: string, valStr: string, person: PersonKey) => {
-      const val = parseEuro(valStr || '')
+      const val = Math.round(parseEuro(valStr || '') * factor)
       if (val > 0) projects[person].push({ name: project, value: val })
     }
     pushIf(cols[idx.CRIS.pct], cols[idx.CRIS.val], 'Cristiano')
@@ -133,6 +132,10 @@ function computeFromCsv(csv: string) {
     pushIf(cols[idx.BETTA.pct], cols[idx.BETTA.val], 'Elisabetta')
     pushIf(cols[idx.FABE.pct], cols[idx.FABE.val], 'Fabio')
   }
+  // Calcola i totali come somma dei progetti (con fattori H1 applicati)
+  (Object.keys(projects) as Array<PersonKey>).forEach((k) => {
+    totals[k] = projects[k].reduce((acc, p) => acc + p.value, 0)
+  })
   return { totals, projects }
 }
 
@@ -240,6 +243,7 @@ export function SlideConfrontoH1() {
         </table>
       </div>
       <p className="muted">Considerazione principale: le persone che riescono a matchare il max sono quelle che seguono attività ricorrenti (AMS) o prodotti.</p>
+      <p className="muted">H1 factors applicati: {Object.entries(H1_FACTORS).map(([k,v]) => `${k} ${Math.round(v*100)}%`).join(' · ')}. In simulazione H2/anno considerati al 100%.</p>
     </div>
   )
 }

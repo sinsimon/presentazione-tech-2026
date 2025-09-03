@@ -1,7 +1,7 @@
 import React from 'react'
 import { SlideTitle, DataTable, Nav, MetricsPanel } from '@components'
 
-const DEFAULT_GIORNI_H1_PER_PERSONA = 120;
+const DEFAULT_GIORNI_H1_PER_PERSONA = 115;
 
 const UTILIZATION: Record<string, number> = {
   'Simone': 0.55,
@@ -101,7 +101,7 @@ export function SlideCaricoMassimo() {
           }
         }}
       />
-      <p className="muted">Assunzioni: 6 mesi ≈ 120 giorni lavorativi (modificabile). Utilization e prezzi/giorno sono configurabili riga per riga.</p>
+      <p className="muted">Assunzioni: 6 mesi ≈ 115 giorni lavorativi (modificabile). Utilization e prezzi/giorno sono configurabili riga per riga.</p>
     </div>
   )
 }
