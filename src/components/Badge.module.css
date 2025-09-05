@@ -1,0 +1,20 @@
+.badge {
+  display: inline-block;
+  font-size: 12px;
+  line-height: 1;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.10);
+  color: var(--muted);
+  font-weight: 700;
+  user-select: none;
+}
+
+/* Varianti colore, in linea con gli altri badge tabellari */
+.mkt { background: rgba(52, 211, 153, 0.16); color: #a7f3d0; }
+.tech { background: rgba(99, 102, 241, 0.18); color: #c7d2fe; }
+.warn { background: rgba(255, 122, 60, 0.18); color: #ffb48a; }
+.danger { background: rgba(255, 87, 87, 0.18); color: #ff9a9a; }
+.good { background: rgba(52, 211, 153, 0.16); color: #a7f3d0; }
+
+

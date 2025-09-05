@@ -5,5 +5,6 @@ export { MetricsGrid } from './MetricsGrid'
 export { DataTable } from './DataTable'
 export { Presentation, Nav } from './Presentation'
 export { TwoColumnSlide } from './TwoColumnSlide'
+export { Badge } from './Badge'
 
 

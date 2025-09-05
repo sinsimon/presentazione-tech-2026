@@ -17,16 +17,19 @@ export function DataTable(
     footer,
     editable,
     onChange,
+    size = 'normal',
   }: {
     rows?: Array<Row>;
     footer?: { giorni: string; ricavo: string };
     editable?: { utilization?: boolean; prezzoGiorno?: boolean };
     onChange?: (index: number, field: 'utilization' | 'prezzoGiorno', value: number) => void;
+    size?: 'compact' | 'normal' | 'large';
   }
 ) {
   const showPrezzoGiorno = rows.some((r: any) => r && r.prezzoGiorno !== undefined)
+  const sizeClass = size === 'compact' ? styles.sizeCompact : size === 'large' ? styles.sizeLarge : styles.sizeNormal
   return (
-    <div className={styles.panel}>
+    <div className={[styles.panel, sizeClass].join(' ')}>
       <table className={styles.table}>
         <thead>
           <tr>

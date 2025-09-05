@@ -5,6 +5,7 @@ export function TwoColumnSlide({
   leftTitle,
   leftSubtitle,
   leftContent,
+  leftTitleSize = 'normal',
   rightTitle,
   rightItems,
   rightContent,
@@ -13,6 +14,7 @@ export function TwoColumnSlide({
   leftTitle: React.ReactNode
   leftSubtitle?: React.ReactNode
   leftContent?: React.ReactNode
+  leftTitleSize?: 'normal' | 'small'
   rightTitle: React.ReactNode
   rightItems?: Array<{ title: React.ReactNode; body?: React.ReactNode }>
   rightContent?: React.ReactNode
@@ -22,7 +24,7 @@ export function TwoColumnSlide({
     <div className={styles.root}>
       <section className={styles.left}>
         <div className={styles.leftInner}>
-          <h1 className={styles.h1}>{leftTitle}</h1>
+          <h1 className={leftTitleSize === 'small' ? styles.h1Small : styles.h1}>{leftTitle}</h1>
           {leftSubtitle ? <p className={styles.subtitle}>{leftSubtitle}</p> : null}
           {leftContent}
         </div>

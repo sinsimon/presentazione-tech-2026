@@ -8,6 +8,8 @@
 
 table { width: 100%; border-collapse: collapse; font-size: 14px; table-layout: fixed; }
 th, td { text-align: left; padding: 10px 10px; white-space: nowrap; vertical-align: middle; }
+/* Ingrandisce il testo delle righe della tabella per migliore leggibilità */
+tbody td { font-size: 15px; }
 thead th { position: sticky; top: 0; background: rgba(15, 23, 42, 0.85); color: var(--muted); font-weight: 600; border-bottom: 1px solid rgba(255, 255, 255, 0.08); white-space: normal; }
 tbody tr { border-bottom: 1px dashed rgba(255, 255, 255, 0.06); }
 tbody tr:hover { background: rgba(255, 255, 255, 0.03); }
@@ -34,5 +36,15 @@ tfoot td { font-weight: 800; border-top: 1px solid rgba(255, 255, 255, 0.12); }
 .cellStack { display: flex; flex-direction: column; align-items: flex-end; min-height: 36px; }
 .cellValue { display: block; }
 .cellBadge { margin-top: 4px; }
+
+/* Dimensioni: applicate al contenitore per scalare font/padding */
+.sizeNormal {}
+.sizeCompact table { font-size: 13px; }
+.sizeCompact tbody td { font-size: 14px; }
+.sizeCompact th, .sizeCompact td { padding: 8px 8px; }
+
+.sizeLarge table { font-size: 15px; }
+.sizeLarge tbody td { font-size: 16px; }
+.sizeLarge th, .sizeLarge td { padding: 12px 12px; }
 
 
